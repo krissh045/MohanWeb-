@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>web:login</title>
+
+	<script type="text/javascript">
+		dataLayer=[];
+	</script>
+
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-TR9QT3N');</script>
+	<!-- End Google Tag Manager -->
+
+	<script type="text/javascript">
+		function validate(){
+			var regex_name = /^[a-zA-Z1-3]{2,20}$/;
+			var uid =  document.loginForm.uid.value;
+			if(uid==""){
+				uid_error.innerHTML="&emsp; User id should not be empty!";
+				return false;
+			}
+			else if (regex_name.test(uid)){
+				uid_error.innerHTML="";
+				document.cookie = "userID="+uid;
+
+				dataLayer.push({
+					'event': 'user ID'
+			});
+
+				return true;
+			}
+			else{
+				uid_error.innerHTML="&emsp; Please enter valid User ID!";
+				return false;
+			}
+		}
+	</script>
+</head>
+<body>
+
+	<script type="text/javascript">
+	dataLayer.push({
+					'event': 'pageview',
+					'pagename': 'web:login'
+			});
+	</script>
+				
+
+	<h1>Login here</h1>
+	<form name="loginForm"  action="s1_impression.html" method="get" onsubmit="return validate();">
+		User ID:<br><input type="text" name="uid"><span id="uid_error" style="color: red"> *</span><br><br>
+		<input type="submit" value="Login">
+	</form>
+<script src="https://www.gstatic.com/firebasejs/6.4.2/firebase-app.js"></script>
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDzPjZn3QQa8AYv6LAnhQLEaU72aGZ83lA",
+    authDomain: "web-app-767a7.firebaseapp.com",
+    databaseURL: "https://web-app-767a7.firebaseio.com",
+    projectId: "web-app-767a7",
+    storageBucket: "",
+    messagingSenderId: "833351841450",
+    appId: "1:833351841450:web:5b25b05fffad54ec"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>	
+	
+</body>
+</html>
